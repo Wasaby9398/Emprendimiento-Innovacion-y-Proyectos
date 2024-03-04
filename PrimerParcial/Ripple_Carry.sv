@@ -31,12 +31,12 @@ assign Cout = (A & B)|(Cin & (A^B));
 endmodule
 
 module RippleCarry(
-    input [7:0]sw, //0-3A, 4-7B
+    input [8:0]sw, //0-3A, 4-7B
     output [4:0]led //S0,S1,S2,S3,Cout
     );
 wire[3:0]c; //internal carries
     
-FullAdder FA0(sw[0],sw[4],0,led[0],c[0]);
+FullAdder FA0(sw[0],sw[4],sw[8],led[0],c[0]);
 FullAdder FA1(sw[1],sw[5],c[0],led[1],c[1]);
 FullAdder FA2(sw[2],sw[6],c[1],led[2],c[2]);
 FullAdder FA3(sw[3],sw[7],c[2],led[3],led[4]);
